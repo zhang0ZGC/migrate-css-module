@@ -1,0 +1,24 @@
+{
+  "name": "migrate-css-module",
+  "description": "迁移项目中引用的全局样式文件到CSS Module，当前用于taro项目",
+  "author": "XM",
+  "version": "1.0.0",
+  "main": "./src/migrate-css-module.mjs",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "13",
+    "globby": "^14.1.0",
+    "globy": "^0.1.8",
+    "jscodeshift": "^17.3.0",
+    "ora": "^8.2.0",
+    "postcss": "^8.5.4",
+    "postcss-modules": "^6.0.1",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.89.2",
+    "simple-git": "^3.28.0"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

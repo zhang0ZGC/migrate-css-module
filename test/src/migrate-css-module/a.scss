@@ -1,0 +1,65 @@
+@use "b.scss";
+
+.page {
+  background-color: #fff;
+}
+
+.button {
+  color: #323232;
+  background-color: #f1f1f1;
+
+  &--primary {
+    background-color: #007aff;
+    color: #fff;
+  }
+
+  &--warning {
+    background-color: #ff9500;
+    color: #fff;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.color--red {
+  color: red;
+}
+
+.color--blue {
+  color: blue;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+
+  &.active {
+    background-color: azure;
+  }
+
+  :global(.image) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :global {
+    .text {
+      font-size: 14px;
+    }
+
+    .image {
+      object-fit: contain;
+    }
+  }
+
+  .at-icon {
+    font-size: 20px;
+
+    &.at-icon-close {
+      font-size: 16px;
+    }
+  }
+}
