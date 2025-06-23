@@ -219,7 +219,7 @@ async function migrateCssModule() {
               if (transRes) {
                 collectArguments = collectArguments.concat(transRes)
               } else {
-                collectArguments.push(i)
+                collectArguments.push(expression)
               }
             }
             // 处理右侧字符串(只需要处理最后一个)
@@ -244,15 +244,17 @@ async function migrateCssModule() {
           })
         } else if (value.type === 'ConditionalExpression') {
           const newExpression = j.conditionalExpression(value.test, j.nullLiteral(), j.nullLiteral())
-          const leftTransformRes = transformClassNameAttributeNodeValue(value.consequent)
+          let leftTransformRes = transformClassNameAttributeNodeValue(value.consequent)
           if (leftTransformRes) {
+            leftTransformRes = leftTransformRes.filter(i => i.type !== 'StringLiteral' || i.value.trim() !== '')
             newExpression.consequent = leftTransformRes.length === 1 ? leftTransformRes[0] : j.arrayExpression(leftTransformRes)
           } else {
             newExpression.consequent = value.consequent
           }
 
-          const rightTransformRes = transformClassNameAttributeNodeValue(value.alternate)
+          let rightTransformRes = transformClassNameAttributeNodeValue(value.alternate)
           if (rightTransformRes) {
+            rightTransformRes = rightTransformRes.filter(i => i.type !== 'StringLiteral' || i.value.trim() !== '')
             newExpression.alternate = rightTransformRes.length === 1 ? rightTransformRes[0] : j.arrayExpression(rightTransformRes)
           } else {
             newExpression.alternate = value.alternate

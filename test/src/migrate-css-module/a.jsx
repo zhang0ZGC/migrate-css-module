@@ -25,6 +25,8 @@ const A = (props) => {
       <div className={classNames('card  bg-white')} />
       {/* 结果应该是：className={classNames(styles.card, 'bg-white', {active: level})} */}
       <div className={classNames('card','bg-white', {active: level})} />
+      {/* 结果应该是：className={classNames(styles.card, level ? styles.active : '')} */}
+      <div className={`${level === '1' ? 'active ' : ' '} card`} />
       {/* 结果应该是：className={classNames(styles.card, level ? 'bg-white' : '', styles.colorRed)} */}
       <div className={'card ' + (level ? ' bg-white' : ' ') + (level ? 'button--primary' : 'button') + ' color--red'} />
       <div className='global-card'>
